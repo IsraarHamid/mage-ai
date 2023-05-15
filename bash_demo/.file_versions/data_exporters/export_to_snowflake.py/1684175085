@@ -5,9 +5,7 @@ from pandas import DataFrame
 from os import path
 from snowflake.connector.pandas_tools import pd_writer
 from sqlalchemy import create_engine
-from sqlalchemy.dialects import registry
 
-registry.register('snowflake', 'snowflake.sqlalchemy', 'dialect')
 
 if 'data_exporter' not in globals():
     from mage_ai.data_preparation.decorators import data_exporter
@@ -29,14 +27,12 @@ def export_data_to_snowflake(df: DataFrame, **kwargs) -> None:
 
     conn_string = f"snowflake://{user}:{password}@{account_identifier}/{database_name}/{schema_name}"
     engine = create_engine(conn_string)
-
+    
     table_name = 'recipes_raw'
 
     if_exists = 'replace'
 
     #Write the data to Snowflake, using pd_writer to speed up loading
-    df = df.drop(['Unnamed: 0'], axis=1)
-    print(df)
 
     with engine.connect() as con:
-            df.to_sql(name=table_name.lower(), con=con, if_exists=if_exists, method=pd_writer, index=False)
+            df.to_sql(name=table_name.lower(), con=con, if_exists=if_exists, method=pd_writer)

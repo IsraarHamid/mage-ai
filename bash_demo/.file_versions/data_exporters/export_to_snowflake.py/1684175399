@@ -35,8 +35,6 @@ def export_data_to_snowflake(df: DataFrame, **kwargs) -> None:
     if_exists = 'replace'
 
     #Write the data to Snowflake, using pd_writer to speed up loading
-    df = df.drop(['Unnamed: 0'], axis=1)
-    print(df)
 
     with engine.connect() as con:
-            df.to_sql(name=table_name.lower(), con=con, if_exists=if_exists, method=pd_writer, index=False)
+            df.to_sql(name=table_name.lower(), con=con, if_exists=if_exists, method=pd_writer)
