@@ -16,9 +16,8 @@ def load_data_from_file(*args, **kwargs):
 
     Docs: https://docs.mage.ai/design/data-loading#fileio
     """
-    path_to_json = '/home/israar/mage-ai/bash_demo/sample_data/' 
+    path_to_json = 'bash_demo/sample_data/*' 
     json_pattern = os.path.join(path_to_json,'*.json')
-
     file_list = glob.glob(json_pattern)
 
     temp = pd.DataFrame()
@@ -26,9 +25,7 @@ def load_data_from_file(*args, **kwargs):
     dfs = [] # An empty list to store the DataFrames
 
     for file in file_list:
-
-        data = pd.read_json(file) # Read data frame from the json file
-
+        data = pd.read_json(file, lines=True) # Read data frame from the json file
         dfs.append(data) # Append the DataFrames to the list
 
     temp = pd.concat(dfs, ignore_index=True) # Concatenate all the data frames in the list.

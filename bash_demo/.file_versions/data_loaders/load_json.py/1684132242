@@ -27,7 +27,7 @@ def load_data_from_file(*args, **kwargs):
 
     for file in file_list:
 
-        data = pd.read_json(file) # Read data frame from the json file
+        data = pd.read_json(file, lines=True, typ="series") # Read data frame from the json file
 
         dfs.append(data) # Append the DataFrames to the list
 

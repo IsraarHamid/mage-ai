@@ -36,6 +36,6 @@ executor_type: null
 extensions: {}
 name: json_to_s3
 type: python
-updated_at: '2023-05-15 08:43:32'
+updated_at: '2023-05-15 08:39:37'
 uuid: json_to_s3
 widgets: []
