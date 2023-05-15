@@ -29,7 +29,7 @@ def load_data_from_file(*args, **kwargs):
         dfs.append(data) # Append the DataFrames to the list
 
     temp = pd.concat(dfs, ignore_index=True) # Concatenate all the data frames in the list.
-    print(temp)
+
     return temp
 
 
