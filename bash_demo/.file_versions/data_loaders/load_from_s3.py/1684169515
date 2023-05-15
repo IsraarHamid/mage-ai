@@ -14,24 +14,21 @@ if 'test' not in globals():
 @data_loader
 def load_from_s3_bucket(*args, **kwargs):
     """
-    Exporting data to a S3 bucket.
-    Use MINIO.
+    Template for loading data from a S3 bucket.
+    Specify your configuration settings in 'io_config.yaml'.
 
     Docs: https://docs.mage.ai/design/data-loading#s3
     """
-    # Create a client with the MinIO server playground, its access key
-    # and secret key.
-    client = Minio(
-        "play.min.io",
-        access_key="givGF7VNvMff3D56",
-        secret_key="fQG5YPzDjKrnXolWt1n8NKYzsTO1AA6d",
+    config_path = path.join(get_repo_path(), 'io_config.yaml')
+    config_profile = 'default'
+
+    bucket_name = 'your_bucket_name'
+    object_key = 'your_object_key'
+
+    return S3.with_config(ConfigFileLoader(config_path, config_profile)).load(
+        bucket_name,
+        object_key,
     )
-
-    csv_file = client.get_object("izisamples", "recipe_data.csv", "recipe_data.csv")
-
-    df = pd.read_csv(csv_file)
-
-    return df
 
 
 @test

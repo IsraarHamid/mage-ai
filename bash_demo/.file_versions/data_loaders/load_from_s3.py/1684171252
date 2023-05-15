@@ -27,11 +27,15 @@ def load_from_s3_bucket(*args, **kwargs):
         secret_key="fQG5YPzDjKrnXolWt1n8NKYzsTO1AA6d",
     )
 
-    csv_file = client.get_object("izisamples", "recipe_data.csv", "recipe_data.csv")
 
-    df = pd.read_csv(csv_file)
+    df = pd.read_csv("s3://izisamples/recipe_data.csv",
+        storage_options={
+        "key": givGF7VNvMff3D56,
+        "secret": fQG5YPzDjKrnXolWt1n8NKYzsTO1AA6d,
+        "client_kwargs": {"endpoint_url": "play.min.io"}
+    })
 
-    return df
+    print(df)
 
 
 @test

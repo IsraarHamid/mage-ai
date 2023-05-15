@@ -27,11 +27,19 @@ def load_from_s3_bucket(*args, **kwargs):
         secret_key="fQG5YPzDjKrnXolWt1n8NKYzsTO1AA6d",
     )
 
-    csv_file = client.get_object("izisamples", "recipe_data.csv", "recipe_data.csv")
+    csv_file = client.fget_object("izisamples", "recipe_data.csv", "recipe_data.csv")
 
-    df = pd.read_csv(csv_file)
+    print(csv_file.data)
 
-    return df
+    df = pd.read_csv("s3://dataset/wine-quality.csv",
+        storage_options={
+        "key": givGF7VNvMff3D56,
+        "secret": fQG5YPzDjKrnXolWt1n8NKYzsTO1AA6d,
+        "token": AWS_SESSION_TOKEN,
+        "client_kwargs": {"endpoint_url": "localhost:9000"}
+    })
+
+    print(df)
 
 
 @test

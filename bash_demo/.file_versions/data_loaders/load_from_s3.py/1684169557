@@ -27,11 +27,18 @@ def load_from_s3_bucket(*args, **kwargs):
         secret_key="fQG5YPzDjKrnXolWt1n8NKYzsTO1AA6d",
     )
 
-    csv_file = client.get_object("izisamples", "recipe_data.csv", "recipe_data.csv")
+    # Make  bucket if not exist.
+    found = client.bucket_exists("izisamples")
+    if not found:
+        client.make_bucket("izisamples")
+    else:
+        print("Bucket 'izisamples' already exists")
 
-    df = pd.read_csv(csv_file)
+    df.to_csv("recipe_data.csv")
 
-    return df
+    client.fput_object(
+        "izisamples", "recipe_data.csv", "/home/israar/mage-ai/recipe_data.csv",
+    )
 
 
 @test
