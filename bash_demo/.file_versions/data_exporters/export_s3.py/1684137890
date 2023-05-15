@@ -34,8 +34,9 @@ def export_data_to_s3(df: pd.DataFrame, **kwargs) -> None:
     else:
         print("Bucket 'izisamples' already exists")
 
-    df.to_csv("recipe_data.csv")
+    csv_data = df.to_csv("recipe_data.csv")
+    
 
     client.fput_object(
-        "izisamples", "recipe_data.csv", "/home/israar/mage-ai/recipe_data.csv",
+        "izisamples", csv_data, "recipe_data.csv",
     )

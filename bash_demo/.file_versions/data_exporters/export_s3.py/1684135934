@@ -1,18 +1,17 @@
 from mage_ai.data_preparation.repo_manager import get_repo_path
 from mage_ai.io.config import ConfigFileLoader
 from mage_ai.io.s3 import S3
-import pandas as pd
+from pandas import DataFrame
 from os import path
 from minio import Minio
 from minio.error import S3Error
-from io import StringIO
 
 if 'data_exporter' not in globals():
     from mage_ai.data_preparation.decorators import data_exporter
 
 
 @data_exporter
-def export_data_to_s3(df: pd.DataFrame, **kwargs) -> None:
+def export_data_to_s3(df: DataFrame, **kwargs) -> None:
     """
     Exporting data to a S3 bucket.
     Use MINIO.
@@ -34,8 +33,8 @@ def export_data_to_s3(df: pd.DataFrame, **kwargs) -> None:
     else:
         print("Bucket 'izisamples' already exists")
 
-    df.to_csv("recipe_data.csv")
-
+    # Upload '/home/user/Photos/asiaphotos.zip' as object name
+    # 'asiaphotos-2015.zip' to bucket 'asiatrip'.
     client.fput_object(
-        "izisamples", "recipe_data.csv", "/home/israar/mage-ai/recipe_data.csv",
+        "izisamples", "recipe_d", "/home/user/Photos/asiaphotos.zip",
     )

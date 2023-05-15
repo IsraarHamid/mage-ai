@@ -2,10 +2,10 @@ from mage_ai.data_preparation.repo_manager import get_repo_path
 from mage_ai.io.config import ConfigFileLoader
 from mage_ai.io.s3 import S3
 import pandas as pd
+from pandas import DataFrame
 from os import path
 from minio import Minio
 from minio.error import S3Error
-from io import StringIO
 
 if 'data_exporter' not in globals():
     from mage_ai.data_preparation.decorators import data_exporter
@@ -27,6 +27,8 @@ def export_data_to_s3(df: pd.DataFrame, **kwargs) -> None:
         secret_key="fQG5YPzDjKrnXolWt1n8NKYzsTO1AA6d",
     )
 
+    print(df)
+
     # Make  bucket if not exist.
     found = client.bucket_exists("izisamples")
     if not found:
@@ -34,8 +36,6 @@ def export_data_to_s3(df: pd.DataFrame, **kwargs) -> None:
     else:
         print("Bucket 'izisamples' already exists")
 
-    df.to_csv("recipe_data.csv")
-
     client.fput_object(
-        "izisamples", "recipe_data.csv", "/home/israar/mage-ai/recipe_data.csv",
+        "izisamples", "recipe_data", pd.to_csv(),
     )

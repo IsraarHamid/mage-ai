@@ -5,7 +5,6 @@ import pandas as pd
 from os import path
 from minio import Minio
 from minio.error import S3Error
-from io import StringIO
 
 if 'data_exporter' not in globals():
     from mage_ai.data_preparation.decorators import data_exporter
@@ -34,8 +33,10 @@ def export_data_to_s3(df: pd.DataFrame, **kwargs) -> None:
     else:
         print("Bucket 'izisamples' already exists")
 
-    df.to_csv("recipe_data.csv")
+    csv = df.to_csv("recipe_data.csv")
+    with open(df.to_csv("recipe_data.csv"), "r") as f:
+        print(f)
 
     client.fput_object(
-        "izisamples", "recipe_data.csv", "/home/israar/mage-ai/recipe_data.csv",
+        "izisamples", df.to_csv("recipe_data.csv"), "recipe_data.csv",
     )

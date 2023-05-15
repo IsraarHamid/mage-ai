@@ -22,7 +22,7 @@ blocks:
   has_callback: false
   language: python
   name: export_s3
-  status: executed
+  status: updated
   type: data_exporter
   upstream_blocks:
   - load_json
@@ -36,6 +36,6 @@ executor_type: null
 extensions: {}
 name: json_to_s3
 type: python
-updated_at: '2023-05-15 10:09:43'
+updated_at: '2023-05-15 09:45:35'
 uuid: json_to_s3
 widgets: []
