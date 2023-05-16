@@ -36,6 +36,6 @@ executor_type: null
 extensions: {}
 name: s3_to_snowflake
 type: python
-updated_at: '2023-05-15 20:34:52'
+updated_at: '2023-05-16 10:31:01'
 uuid: s3_to_snowflake
 widgets: []

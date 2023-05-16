@@ -22,7 +22,7 @@ blocks:
   has_callback: false
   language: python
   name: export_to_snowflake
-  status: failed
+  status: updated
   type: data_exporter
   upstream_blocks:
   - load_from_s3
@@ -30,10 +30,12 @@ blocks:
 callbacks: []
 data_integration: null
 description: null
+executor_config: {}
 executor_count: 1
+executor_type: null
 extensions: {}
 name: s3_to_snowflake
 type: python
-updated_at: '2023-05-15 20:34:22'
+updated_at: '2023-05-16 10:34:07'
 uuid: s3_to_snowflake
 widgets: []

@@ -1,7 +1,7 @@
 from mage_ai.data_preparation.repo_manager import get_repo_path
 from mage_ai.io.config import ConfigFileLoader
 from mage_ai.io.snowflake import Snowflake
-import pandas as pd
+from pandas import DataFrame
 from os import path
 from snowflake.connector.pandas_tools import pd_writer
 from sqlalchemy import create_engine
@@ -16,7 +16,7 @@ if 'data_exporter' not in globals():
 
 
 @data_exporter
-def export_data_to_snowflake(df: pd.DataFrame, **kwargs) -> None:
+def export_data_to_snowflake(df: DataFrame, **kwargs) -> None:
     """
     Export DataFrame data to a Snowflake warehouse.
     Specify your configuration settings in 'io_config.yaml'.
@@ -36,8 +36,7 @@ def export_data_to_snowflake(df: pd.DataFrame, **kwargs) -> None:
 
     if_exists = 'replace'
 
-    #Write and modify the data to Snowflake, using pd_writer to speed up loading
-    df['updated_at'] = pd.Timestamp('now').strftime("%Y/%m/%d %H:%M:%S")
+    #Write the data to Snowflake, using pd_writer to speed up loading
     df = df.drop(['Unnamed: 0'], axis=1)
 
     df.to_sql(name=table_name.lower(), con=engine, if_exists=if_exists, method=functools.partial(pd_writer, quote_identifiers=False), index=False)
