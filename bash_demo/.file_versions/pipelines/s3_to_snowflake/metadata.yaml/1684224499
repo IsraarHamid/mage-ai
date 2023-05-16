@@ -30,12 +30,10 @@ blocks:
 callbacks: []
 data_integration: null
 description: null
-executor_config: {}
 executor_count: 1
-executor_type: null
 extensions: {}
 name: s3_to_snowflake
 type: python
-updated_at: '2023-05-16 10:21:44'
+updated_at: '2023-05-16 10:08:18'
 uuid: s3_to_snowflake
 widgets: []

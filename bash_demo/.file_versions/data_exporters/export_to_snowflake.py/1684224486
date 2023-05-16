@@ -38,4 +38,5 @@ def export_data_to_snowflake(df: DataFrame, **kwargs) -> None:
     #Write the data to Snowflake, using pd_writer to speed up loading
     df = df.drop(['Unnamed: 0'], axis=1)
 
-    df.to_sql(name=table_name.lower(), con=engine, if_exists=if_exists, method=functools.partial(pd_writer, quote_identifiers=False), index=False)
+    with engine.connect() as con:
+            df.to_sql(name=table_name.lower(), con=con, if_exists=if_exists, method=functools.partial(pd_writer, quote_identifiers=False), index=False)
