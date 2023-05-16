@@ -43,8 +43,6 @@ def transform(data, *args, **kwargs):
     """
 
     batter_sql = """
-    CREATE 
-    OR REPLACE VIEW TEST.PRD.BATTER AS (
     WITH DATA AS (
     select 
         * 
@@ -61,35 +59,30 @@ def transform(data, *args, **kwargs):
     LATERAL FLATTEN(
         INPUT => PARSE_JSON(DATA.BATTERS): batter, 
         OUTER => TRUE
-    ) AS BATTERS
-    );
+    ) AS BATTERS;
     """
 
+
     topping_sql = """
-    CREATE 
-    OR REPLACE VIEW TEST.PRD.TOPPING AS (
     WITH DATA AS (
-        select 
+    select 
         * 
-        from 
+    from 
         TEST.RAW.RECIPES_RAW
     ) 
     SELECT 
-        DATA.ID AS RECIPE_ID, 
-        TOPPINGS.value : id :: INT AS TOPPING_ID, 
-        TOPPINGS.value : type :: VARCHAR AS TOPPING_TYPE, 
-        DATA.UPDATED_AT 
+    DATA.ID AS RECIPE_ID, 
+    TOPPINGS.value : id :: INT AS TOPPING_ID, 
+    TOPPINGS.value : type :: VARCHAR AS TOPPING_TYPE, 
+    DATA.UPDATED_AT 
     FROM 
-        DATA, 
-        LATERAL FLATTEN(
+    DATA, 
+    LATERAL FLATTEN(
         INPUT => PARSE_JSON(DATA.TOPPING), 
         OUTER => TRUE
-        ) AS TOPPINGS
-    );
+    ) AS TOPPINGS;
     """
 
     cursor = conn.cursor()
     cursor.execute(recipe_sql)
-    cursor.execute(batter_sql)
-    cursor.execute(topping_sql)
     cursor.close()

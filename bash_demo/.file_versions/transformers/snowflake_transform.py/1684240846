@@ -43,8 +43,6 @@ def transform(data, *args, **kwargs):
     """
 
     batter_sql = """
-    CREATE 
-    OR REPLACE VIEW TEST.PRD.BATTER AS (
     WITH DATA AS (
     select 
         * 
@@ -61,9 +59,9 @@ def transform(data, *args, **kwargs):
     LATERAL FLATTEN(
         INPUT => PARSE_JSON(DATA.BATTERS): batter, 
         OUTER => TRUE
-    ) AS BATTERS
-    );
+    ) AS BATTERS;
     """
+
 
     topping_sql = """
     CREATE 

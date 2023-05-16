@@ -65,6 +65,7 @@ def transform(data, *args, **kwargs):
     );
     """
 
+
     topping_sql = """
     CREATE 
     OR REPLACE VIEW TEST.PRD.TOPPING AS (
