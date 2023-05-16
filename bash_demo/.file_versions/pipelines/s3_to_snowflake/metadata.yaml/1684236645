@@ -30,14 +30,18 @@ blocks:
   uuid: export_to_snowflake
 - all_upstream_blocks_executed: false
   color: null
-  configuration: {}
+  configuration:
+    data_provider: snowflake
+    export_write_policy: append
+    limit: 1000
+    use_raw_sql: false
   downstream_blocks: []
   executor_config: null
   executor_type: local_python
   has_callback: false
-  language: python
+  language: sql
   name: snowflake_transform
-  status: executed
+  status: updated
   type: transformer
   upstream_blocks:
   - export_to_snowflake
@@ -51,6 +55,6 @@ executor_type: null
 extensions: {}
 name: s3_to_snowflake
 type: python
-updated_at: '2023-05-16 13:45:52'
+updated_at: '2023-05-16 13:30:44'
 uuid: s3_to_snowflake
 widgets: []

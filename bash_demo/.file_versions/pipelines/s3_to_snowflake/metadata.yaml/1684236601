@@ -35,9 +35,9 @@ blocks:
   executor_config: null
   executor_type: local_python
   has_callback: false
-  language: python
+  language: sql
   name: snowflake_transform
-  status: executed
+  status: updated
   type: transformer
   upstream_blocks:
   - export_to_snowflake
@@ -51,6 +51,6 @@ executor_type: null
 extensions: {}
 name: s3_to_snowflake
 type: python
-updated_at: '2023-05-16 13:45:52'
+updated_at: '2023-05-16 13:09:30'
 uuid: s3_to_snowflake
 widgets: []
