@@ -23,7 +23,7 @@ def load_from_s3_bucket(*args, **kwargs):
     # and secret key.
     client = Minio(
         "play.min.io",
-        access_key="eSbIw0JJQZBC7u2o",
+        access_key="givGF7VNvMff3D56",
         secret_key="0kRLxXXceG8m7Yt2VLl2vpsIKRhGC6tV",
     )
 
