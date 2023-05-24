@@ -18,9 +18,9 @@ blocks:
   color: null
   configuration: {}
   downstream_blocks:
-  - days_from_suspension_report
   - agent_collection_report
   - payment_type_report
+  - days_from_suspension_report
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -33,8 +33,7 @@ blocks:
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
-  downstream_blocks:
-  - export_data
+  downstream_blocks: []
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -73,16 +72,17 @@ blocks:
   type: data_exporter
   upstream_blocks:
   - payment_type_report
-  - agent_collection_report
   - days_from_suspension_report
   uuid: export_data
 callbacks: []
 data_integration: null
 description: null
+executor_config: {}
 executor_count: 1
+executor_type: null
 extensions: {}
 name: lumkani_demo
 type: python
-updated_at: '2023-05-24 19:47:41'
+updated_at: '2023-05-24 20:17:06'
 uuid: lumkani_demo
 widgets: []

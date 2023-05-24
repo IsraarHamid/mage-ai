@@ -6,7 +6,7 @@ if 'data_exporter' not in globals():
 
 
 @data_exporter
-def export_data_to_file(df: DataFrame, filename: str, **kwargs) -> None:
+def export_data_to_file(df: DataFrame, **kwargs) -> None:
     """
     Export csv data to folder.
     Note: Point filepath variable to directory path of folder for demo.
@@ -14,6 +14,8 @@ def export_data_to_file(df: DataFrame, filename: str, **kwargs) -> None:
     Docs: https://docs.mage.ai/design/data-loading#fileio
     """
     folder_name = 'output_folder'
+
+    filename = 'days_from_suspension_report'
 
     filepath = f"/home/israar/mage-ai/lumkani/{folder_name}/{filename}.csv"
 
