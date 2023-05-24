@@ -309,3 +309,4 @@ wrapt==1.15.0
 yarl==1.9.2
 zipp==1.0.0
 zstandard==0.21.0
+pandasql==0.7.3
