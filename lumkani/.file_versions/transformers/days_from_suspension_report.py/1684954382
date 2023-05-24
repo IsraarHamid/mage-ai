@@ -20,9 +20,15 @@ def transform(df: pd.DataFrame, *args, **kwargs):
 
     payments = df
 
-    q1 = """
+    q1 = """SELECT device_id, created,
+    CASE WHEN status != "SUCCESSFUL"
+    OR JULIANDAY(arrival) - JULIANDAY(departure) AS difference 
+    
+    FROM payments
+    GROUP BY
     SELECT t.device_id, r.created, 
-    JULIANDAY(r.created) - JULIANDAY(DATETIME(r.created, '+90 days')) 
+    CASE WHEN t.status != "SUCCESSFUL"
+    OR JULIANDAY(r.created) - JULIANDAY(DATETIME(r.created, '+10 days')) AS difference 
     AS days_from_suspension
     FROM (
         SELECT device_id, MAX(created) as created

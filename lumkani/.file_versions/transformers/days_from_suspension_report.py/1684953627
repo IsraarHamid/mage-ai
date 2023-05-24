@@ -20,17 +20,11 @@ def transform(df: pd.DataFrame, *args, **kwargs):
 
     payments = df
 
-    q1 = """
-    SELECT t.device_id, r.created, 
-    JULIANDAY(r.created) - JULIANDAY(DATETIME(r.created, '+90 days')) 
-    AS days_from_suspension
-    FROM (
-        SELECT device_id, MAX(created) as created
-        FROM payments
-        GROUP BY device_id
-    ) r
-    INNER JOIN payments t
-    ON t.device_id = r.device_id AND t.created = r.created
+    q1 = """SELECT device_id, created,
+    CASE WHEN status != "SUCCESSFUL" 
+    
+    FROM payments 
+    
     
     """
 

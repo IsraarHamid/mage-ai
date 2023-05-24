@@ -22,7 +22,8 @@ def transform(df: pd.DataFrame, *args, **kwargs):
 
     q1 = """
     SELECT t.device_id, r.created, 
-    JULIANDAY(r.created) - JULIANDAY(DATETIME(r.created, '+90 days')) 
+    CASE WHEN t.status != "SUCCESSFUL"
+    OR JULIANDAY(r.created) - JULIANDAY(DATETIME(r.created, '+10 days')) AS difference 
     AS days_from_suspension
     FROM (
         SELECT device_id, MAX(created) as created
