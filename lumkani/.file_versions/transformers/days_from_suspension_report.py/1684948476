@@ -1,5 +1,5 @@
 import pandas as pd
-import pandasql as ps
+
 
 if 'transformer' not in globals():
     from mage_ai.data_preparation.decorators import transformer
@@ -20,9 +20,7 @@ def transform(data, *args, **kwargs):
 
     filename = 'days_from_suspension_report'
 
-    q1 = """SELECT ID FROM df """
 
-    print(ps.sqldf(q1, locals()))
 
     return data, filename
 

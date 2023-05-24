@@ -22,8 +22,6 @@ def transform(data, *args, **kwargs):
 
     q1 = """SELECT ID FROM df """
 
-    print(ps.sqldf(q1, locals()))
-
     return data, filename
 
 

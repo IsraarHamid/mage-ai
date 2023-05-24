@@ -20,9 +20,7 @@ def transform(data, *args, **kwargs):
 
     filename = 'days_from_suspension_report'
 
-    q1 = """SELECT ID FROM df """
-
-    print(ps.sqldf(q1, locals()))
+    
 
     return data, filename
 
