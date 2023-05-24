@@ -29,13 +29,9 @@ def load_data_from_file(*args, **kwargs):
 
     for file in file_list:
         data = pd.read_csv(file, skip_blank_lines=True) # Read data frame from the csv file
+        if len(data) <= 
         
-        # Data input limit validation
-
-        if len(data) <= 100000:
-            dfs.append(data) # Append the DataFrames to the list
-        else:
-            print("Data input exceeds data limit of 100 000 records.")
+        dfs.append(data) # Append the DataFrames to the list
 
     temp = pd.concat(dfs, ignore_index=True) # Concatenate all the data frames in the list.
     
