@@ -8,7 +8,7 @@ if 'test' not in globals():
 
 
 @transformer
-def transform(df: pd.DataFrame, *args, **kwargs):
+def transform(df: DataFrame, *args, **kwargs):
     """
     Code for a transformer block for payment_type_report.csv report.
     Args:
@@ -21,11 +21,6 @@ def transform(df: pd.DataFrame, *args, **kwargs):
     filename = 'payment_type_report'
 
     payments = df
-
-    q1 = """SELECT * FROM payments """
-
-    print(ps.sqldf(q1, locals()))
-    data = ps.sqldf(q1, locals())
 
     return data, filename
 

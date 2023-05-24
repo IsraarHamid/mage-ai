@@ -22,11 +22,6 @@ def transform(df: pd.DataFrame, *args, **kwargs):
 
     payments = df
 
-    q1 = """SELECT * FROM payments """
-
-    print(ps.sqldf(q1, locals()))
-    data = ps.sqldf(q1, locals())
-
     return data, filename
 
 

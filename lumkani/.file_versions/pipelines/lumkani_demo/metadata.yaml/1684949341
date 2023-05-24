@@ -55,7 +55,7 @@ blocks:
   has_callback: false
   language: python
   name: payment_type_report
-  status: updated
+  status: failed
   type: transformer
   upstream_blocks:
   - load_data
@@ -85,6 +85,6 @@ executor_type: null
 extensions: {}
 name: lumkani_demo
 type: python
-updated_at: '2023-05-24 19:29:57'
+updated_at: '2023-05-24 19:29:01'
 uuid: lumkani_demo
 widgets: []
