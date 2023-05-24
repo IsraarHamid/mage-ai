@@ -5,7 +5,6 @@ blocks:
   downstream_blocks:
   - days_from_suspension_report
   - agent_collection_report
-  - payment_type_report
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -32,7 +31,8 @@ blocks:
 - all_upstream_blocks_executed: false
   color: null
   configuration: {}
-  downstream_blocks: []
+  downstream_blocks:
+  - payment_type_report
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -55,7 +55,7 @@ blocks:
   status: updated
   type: transformer
   upstream_blocks:
-  - load_data
+  - agent_collection_report
   uuid: payment_type_report
 callbacks: []
 data_integration: null
@@ -66,6 +66,6 @@ executor_type: null
 extensions: {}
 name: morning wildflower
 type: python
-updated_at: '2023-05-24 11:45:14'
+updated_at: '2023-05-24 11:44:42'
 uuid: morning_wildflower
 widgets: []
