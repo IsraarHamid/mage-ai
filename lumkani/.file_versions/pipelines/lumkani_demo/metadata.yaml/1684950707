@@ -9,7 +9,7 @@ blocks:
   has_callback: false
   language: python
   name: days_from_suspension_report
-  status: executed
+  status: updated
   type: transformer
   upstream_blocks:
   - load_data
@@ -18,9 +18,9 @@ blocks:
   color: null
   configuration: {}
   downstream_blocks:
+  - days_from_suspension_report
   - agent_collection_report
   - payment_type_report
-  - days_from_suspension_report
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -79,10 +79,12 @@ blocks:
 callbacks: []
 data_integration: null
 description: null
+executor_config: {}
 executor_count: 1
+executor_type: null
 extensions: {}
 name: lumkani_demo
 type: python
-updated_at: '2023-05-24 20:16:54'
+updated_at: '2023-05-24 19:51:47'
 uuid: lumkani_demo
 widgets: []

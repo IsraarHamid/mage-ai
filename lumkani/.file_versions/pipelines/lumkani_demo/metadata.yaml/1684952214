@@ -9,7 +9,7 @@ blocks:
   has_callback: false
   language: python
   name: days_from_suspension_report
-  status: executed
+  status: updated
   type: transformer
   upstream_blocks:
   - load_data
@@ -79,7 +79,9 @@ blocks:
 callbacks: []
 data_integration: null
 description: null
+executor_config: {}
 executor_count: 1
+executor_type: null
 extensions: {}
 name: lumkani_demo
 type: python

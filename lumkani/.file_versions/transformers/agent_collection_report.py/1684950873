@@ -18,13 +18,15 @@ def transform(df: pd.DataFrame, *args, **kwargs):
         csv report file
     """
 
+    filename = 'agent_collection_report'
+
     payments = df
 
     q1 = """SELECT * FROM payments """
 
     data = ps.sqldf(q1, locals())
 
-    return data
+    return data, filename
 
 
 @test

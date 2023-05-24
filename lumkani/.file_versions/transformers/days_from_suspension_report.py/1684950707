@@ -10,7 +10,7 @@ if 'test' not in globals():
 @transformer
 def transform(df: pd.DataFrame, *args, **kwargs):
     """
-    Code for a transformer block for agent_collection_report.csv report.
+    Code for a transformer block for days_from_suspension_report.csv report.
     Args:
         df: The output from the upstream parent block
 
@@ -18,10 +18,13 @@ def transform(df: pd.DataFrame, *args, **kwargs):
         csv report file
     """
 
+    filename = 'days_from_suspension_report'
+
     payments = df
 
     q1 = """SELECT * FROM payments """
 
+    print(ps.sqldf(q1, locals()))
     data = ps.sqldf(q1, locals())
 
     return data
