@@ -69,7 +69,7 @@ blocks:
   has_callback: false
   language: python
   name: export_data
-  status: updated
+  status: not_executed
   type: data_exporter
   upstream_blocks:
   - payment_type_report
@@ -85,6 +85,6 @@ executor_type: null
 extensions: {}
 name: lumkani_demo
 type: python
-updated_at: '2023-05-24 14:19:28'
+updated_at: '2023-05-24 14:14:11'
 uuid: lumkani_demo
 widgets: []
