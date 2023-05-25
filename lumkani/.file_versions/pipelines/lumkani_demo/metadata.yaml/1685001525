@@ -39,7 +39,7 @@ blocks:
   has_callback: false
   language: python
   name: agent_collection_report
-  status: executed
+  status: updated
   type: transformer
   upstream_blocks:
   - load_data
@@ -75,10 +75,12 @@ blocks:
 callbacks: []
 data_integration: null
 description: null
+executor_config: {}
 executor_count: 1
+executor_type: null
 extensions: {}
 name: lumkani_demo
 type: python
-updated_at: '2023-05-25 10:05:44'
+updated_at: '2023-05-25 09:58:45'
 uuid: lumkani_demo
 widgets: []

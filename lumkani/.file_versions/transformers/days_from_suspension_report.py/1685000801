@@ -1,6 +1,5 @@
 import pandas as pd
 import pandasql as ps
-from datetime import date
 
 if 'transformer' not in globals():
     from mage_ai.data_preparation.decorators import transformer
@@ -11,7 +10,7 @@ if 'test' not in globals():
 @transformer
 def transform(df: pd.DataFrame, *args, **kwargs):
     """
-    Code for a transformer block for agent_collection_report.csv report.
+    Code for a transformer block for days_from_suspension_report.csv report.
     Args:
         df: The output from the upstream parent block
 
@@ -21,11 +20,19 @@ def transform(df: pd.DataFrame, *args, **kwargs):
 
     payments = df
 
-    q1 = f"""
-    SELECT agent_user_id, created as date, payment_type,
-    sum(payment_amount) AS total_amount
-    FROM payments
-    GROUP BY 1,2,3
+    q1 = """
+    SELECT t.device_id, r.created, 
+    CASE WHEN STRFTIME("%Y-%m", DATE(‘now’)) = r.created
+    JULIANDAY(DATETIME(r.created, '+90 days')) - JULIANDAY(r.created)
+    AS days_from_suspension
+    FROM (
+        SELECT device_id, MAX(created) as created
+        FROM payments
+        GROUP BY device_id
+    ) r
+    INNER JOIN payments t
+    ON t.device_id = r.device_id AND t.created = r.created
+    
     """
 
     data = ps.sqldf(q1, locals())

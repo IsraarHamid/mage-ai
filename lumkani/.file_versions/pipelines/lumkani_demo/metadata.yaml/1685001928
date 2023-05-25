@@ -79,6 +79,6 @@ executor_count: 1
 extensions: {}
 name: lumkani_demo
 type: python
-updated_at: '2023-05-25 10:05:44'
+updated_at: '2023-05-25 10:05:27'
 uuid: lumkani_demo
 widgets: []

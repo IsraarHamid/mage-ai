@@ -21,6 +21,8 @@ def transform(df: pd.DataFrame, *args, **kwargs):
 
     payments = df
 
+    today = date.today()
+
     q1 = f"""
     SELECT agent_user_id, created as date, payment_type,
     sum(payment_amount) AS total_amount
