@@ -33,8 +33,7 @@ blocks:
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
-  downstream_blocks:
-  - export_agent_data
+  downstream_blocks: []
   executor_config: null
   executor_type: local_python
   has_callback: false
@@ -48,14 +47,13 @@ blocks:
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
-  downstream_blocks:
-  - export_payment_data
+  downstream_blocks: []
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
   name: payment_type_report
-  status: executed
+  status: updated
   type: transformer
   upstream_blocks:
   - load_data
@@ -83,25 +81,10 @@ blocks:
   has_callback: false
   language: python
   name: export_agent_data
-  status: executed
+  status: not_executed
   type: data_exporter
-  upstream_blocks:
-  - agent_collection_report
+  upstream_blocks: []
   uuid: export_agent_data
-- all_upstream_blocks_executed: true
-  color: null
-  configuration: {}
-  downstream_blocks: []
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: export_payment_data
-  status: executed
-  type: data_exporter
-  upstream_blocks:
-  - payment_type_report
-  uuid: export_payment_data
 callbacks: []
 data_integration: null
 description: null
@@ -111,6 +94,6 @@ executor_type: null
 extensions: {}
 name: lumkani_demo
 type: python
-updated_at: '2023-05-25 11:50:29'
+updated_at: '2023-05-25 11:43:27'
 uuid: lumkani_demo
 widgets: []

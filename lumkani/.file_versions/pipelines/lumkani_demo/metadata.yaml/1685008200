@@ -105,12 +105,10 @@ blocks:
 callbacks: []
 data_integration: null
 description: null
-executor_config: {}
 executor_count: 1
-executor_type: null
 extensions: {}
 name: lumkani_demo
 type: python
-updated_at: '2023-05-25 11:50:29'
+updated_at: '2023-05-25 11:50:00'
 uuid: lumkani_demo
 widgets: []

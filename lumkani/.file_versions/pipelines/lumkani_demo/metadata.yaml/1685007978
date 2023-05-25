@@ -48,14 +48,13 @@ blocks:
 - all_upstream_blocks_executed: true
   color: null
   configuration: {}
-  downstream_blocks:
-  - export_payment_data
+  downstream_blocks: []
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
   name: payment_type_report
-  status: executed
+  status: updated
   type: transformer
   upstream_blocks:
   - load_data
@@ -97,10 +96,9 @@ blocks:
   has_callback: false
   language: python
   name: export_payment_data
-  status: executed
+  status: updated
   type: data_exporter
-  upstream_blocks:
-  - payment_type_report
+  upstream_blocks: []
   uuid: export_payment_data
 callbacks: []
 data_integration: null
@@ -111,6 +109,6 @@ executor_type: null
 extensions: {}
 name: lumkani_demo
 type: python
-updated_at: '2023-05-25 11:50:29'
+updated_at: '2023-05-25 11:46:15'
 uuid: lumkani_demo
 widgets: []
