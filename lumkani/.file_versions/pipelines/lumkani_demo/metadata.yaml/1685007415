@@ -67,7 +67,7 @@ blocks:
   has_callback: false
   language: python
   name: export_suspension_data
-  status: executed
+  status: failed
   type: data_exporter
   upstream_blocks:
   - days_from_suspension_report
@@ -75,12 +75,10 @@ blocks:
 callbacks: []
 data_integration: null
 description: null
-executor_config: {}
 executor_count: 1
-executor_type: null
 extensions: {}
 name: lumkani_demo
 type: python
-updated_at: '2023-05-25 11:43:27'
+updated_at: '2023-05-25 11:36:40'
 uuid: lumkani_demo
 widgets: []

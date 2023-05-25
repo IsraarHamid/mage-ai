@@ -18,15 +18,15 @@ def export_data_to_file(df: DataFrame, **kwargs) -> None:
     """
     folder_name = 'output_folder'
 
-    dir_path = '/home/israar/mage-ai/lumkani/'
+    dirpath = 
 
     # Create directory if not exists
-    if not os.path.exists(f"{dir_path}{folder_name}"):
-        os.makedirs(f"{dir_path}{folder_name}")
+    if not os.path.exists(f"/home/israar/mage-ai/lumkani/{folder_name}"):
+        os.makedirs(f"/home/israar/mage-ai/lumkani/{folder_name}")
     else: print("Directory exists.")
 
     filename = 'days_from_suspension_report'
 
-    filepath = f"{dir_path}{folder_name}/{filename}.csv"
+    filepath = f"/home/israar/mage-ai/lumkani/{folder_name}/{filename}.csv"
 
     FileIO().export(df, filepath)

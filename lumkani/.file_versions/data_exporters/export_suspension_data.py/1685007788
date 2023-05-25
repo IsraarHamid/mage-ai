@@ -27,6 +27,6 @@ def export_data_to_file(df: DataFrame, **kwargs) -> None:
 
     filename = 'days_from_suspension_report'
 
-    filepath = f"{dir_path}{folder_name}/{filename}.csv"
+    filepath = f"/home/israar/mage-ai/lumkani/{folder_name}/{filename}.csv"
 
     FileIO().export(df, filepath)
