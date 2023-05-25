@@ -1,4 +1,6 @@
 import pandas as pd
+import pandasql as ps
+from datetime import date
 
 if 'transformer' not in globals():
     from mage_ai.data_preparation.decorators import transformer
@@ -7,21 +9,28 @@ if 'test' not in globals():
 
 
 @transformer
-def transform(data, *args, **kwargs):
+def transform(df: pd.DataFrame, *args, **kwargs):
     """
-    Code for a transformer block for days_from_suspension_report.csv report.
+    Code for a transformer block for payment_type_report.csv report.
     Args:
-        data: The output from the upstream parent block
+        df: The output from the upstream parent block
 
     Returns:
         csv report file
     """
 
-    filename = 'days_from_suspension_report'
+    payments = df
 
-    
+    today = date.today()
 
-    return data, filename
+    q1 = f"""
+    SELECT payment_type, sum(payment_amount) AS total_amount
+    FROM payment
+    """
+
+    data = ps.sqldf(q1, locals())
+
+    return data
 
 
 @test

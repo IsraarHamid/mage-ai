@@ -26,8 +26,6 @@ def transform(df: pd.DataFrame, *args, **kwargs):
     q1 = f"""
     SELECT payment_type, sum(payment_amount) AS total_amount
     FROM payments
-    GROUP BY 1
-    ORDER BY 1 ASC
     """
 
     data = ps.sqldf(q1, locals())

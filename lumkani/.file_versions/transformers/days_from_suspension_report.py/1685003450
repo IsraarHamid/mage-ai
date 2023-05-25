@@ -11,7 +11,7 @@ if 'test' not in globals():
 @transformer
 def transform(df: pd.DataFrame, *args, **kwargs):
     """
-    Code for a transformer block for payment_type_report.csv report.
+    Code for a transformer block for days_from_suspension_report.csv report.
     Args:
         df: The output from the upstream parent block
 
@@ -24,10 +24,20 @@ def transform(df: pd.DataFrame, *args, **kwargs):
     today = date.today()
 
     q1 = f"""
-    SELECT payment_type, sum(payment_amount) AS total_amount
-    FROM payments
-    GROUP BY 1
-    ORDER BY 1 ASC
+    SELECT t.device_id, 
+    CASE WHEN STRFTIME("%Y-%m", {today}) = STRFTIME("%Y-%m", r.created)
+    AND t.st
+    THEN JULIANDAY(DATETIME(r.created, '+90 days')) - JULIANDAY(r.created)
+    ELSE 0 END
+    AS days_from_suspension
+    FROM (
+        SELECT device_id, MAX(created) as created
+        FROM payments
+        GROUP BY device_id
+    ) r
+    INNER JOIN payments t
+    ON t.device_id = r.device_id AND t.created = r.created
+    order by 2 desc
     """
 
     data = ps.sqldf(q1, locals())
